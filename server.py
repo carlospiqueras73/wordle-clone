@@ -25,13 +25,13 @@ engine = create_engine(f"mysql+pymysql://{user}:{passw}@{host}/{database}")
 @wordle.route("/")
 def index():
     # Render template
-    return render_template("index.html")
+    return render_template("index.html"), 200
 
 # Registration route - For creating a new account
 @wordle.route("/register")
 def register():
     # Render template
-    return render_template("register.html")
+    return render_template("register.html"), 200
 
 # Registration Handling route - For processing the inputted data on registration
 @wordle.route("/register", methods=["POST"])
@@ -55,12 +55,12 @@ def handle_register():
         # If the query returned a username (user exists)
         if user_exists:
             # Render template that displays error in username
-            return render_template("register_username_exists.html")
+            return render_template("register_username_exists.html"), 400
 
     # Check if both passwords match
     if password != repeat_password:
         # If not, render template that displays error in password
-        return render_template("register_password_dont_match.html")
+        return render_template("register_password_dont_match.html"), 400
 
     # Hash password to store securely
     hashed_password = generate_password_hash(password)
@@ -88,13 +88,13 @@ def handle_register():
         session["username"] = username
         session["user_id"] = user[0]
         # Redirect to the index route
-        return redirect(url_for("index"))
+        return redirect(url_for("index")), 200
 
 # Login route - For logging in if you already have an account
 @wordle.route("/login")
 def login():
     # Render template
-    return render_template("login.html")
+    return render_template("login.html"), 200
 
 # Login Handling route - For processing the inputted data on login
 @wordle.route("/login", methods=["POST"])
@@ -126,10 +126,10 @@ def handle_login():
                 session["username"] = username
                 session["user_id"] = user[0]
                 # Redirect to the index route
-                return redirect(url_for("index"))
+                return redirect(url_for("index")), 200
             
         # Render template that displays login error
-        return render_template("login_failed.html")
+        return render_template("login_failed.html"), 400
 
 # Logout route - For logging out and closing the session
 @wordle.route("/logout")
@@ -138,13 +138,13 @@ def logout():
     session.pop("username")
     session.pop("user_id")
     # Redirect to the index route
-    return redirect(url_for("index"))
+    return redirect(url_for("index")), 200
 
 # Rules route - For displaying the rules of Wordle
 @wordle.route("/rules")
 def rules():
     # Render template
-    return render_template("rules.html")
+    return render_template("rules.html"), 200
 
 # Profile route - For displaying profile information when logged in
 @wordle.route("/profile")
@@ -164,15 +164,13 @@ def profile():
         # Execute query
         record = connection.execute(record_query).fetchone()
         # Render template
-        return render_template(
-            "profile.html",
-            record=record)
+        return render_template("profile.html", record=record), 200
 
 # Game route - For playing the Wordle game
 @wordle.route("/wordle")
 def play_wordle():
     # Render template (includes JavaScript for the game)
-    return render_template("wordle.html")
+    return render_template("wordle.html"), 200
 
 # Win route - For displaying winning message and updating record if logged in
 @wordle.route("/you_won")
@@ -191,7 +189,7 @@ def game_won():
             connection.execute(query)
 
     # Render template
-    return render_template("you_won.html")
+    return render_template("you_won.html"), 200
 
 # Lose route - For displaying correct word and updating record if logged in
 @wordle.route("/you_lost/<word>")
@@ -210,7 +208,7 @@ def game_lost(word):
             connection.execute(query)
 
     # Render template
-    return render_template("you_lost.html", word=word)
+    return render_template("you_lost.html", word=word), 200
 
 # 404 error handler - For error 404 NOT FOUND
 @wordle.errorhandler(404)
