@@ -1,0 +1,53 @@
+{% extends "base.html" %} {% block title %}Rules{% endblock %}{% block main %}
+<link rel="stylesheet" href="/static/wordle.css" />
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+  <div class="row align-items-center g-lg-5 py-5">
+    <div class="col-lg-7 text-center text-lg-start">
+      <h1 class="display-4 fw-bold lh-1 mb-3">Wordle Game Rules</h1>
+      <ul>
+        <li class="col-lg-10 fs-4">Guess the Wordle in 6 tries.</li>
+        <li class="col-lg-10 fs-4">
+          Each guess must be a valid 5-letter word.
+        </li>
+        <li class="col-lg-10 fs-4">
+          The color of the tiles will change to show how close your guess was to
+          the word.
+        </li>
+      </ul>
+      <a href="/wordle">
+        <button class="btn btn-primary btn-lg px-4 me-md-2" type="button">
+          Click to Play!
+        </button></a
+      >
+    </div>
+    <div class="col-md-10 mx-auto col-lg-5">
+      <h1 class="display-15 fw-bold">Examples</h1>
+      <br />
+      <div id="example">
+        <span class="tile correct">W</span>
+        <span class="tile">E</span>
+        <span class="tile">A</span>
+        <span class="tile">R</span>
+        <span class="tile">Y</span>
+      </div>
+      <p class="lead mb-4">"W" is in the word and in the correct spot.</p>
+      <div id="example">
+        <span class="tile">P</span>
+        <span class="tile present">I</span>
+        <span class="tile">L</span>
+        <span class="tile">L</span>
+        <span class="tile">S</span>
+      </div>
+      <p class="lead mb-4">"I" is in the word but in the wrong spot.</p>
+      <div id="example">
+        <span class="tile">V</span>
+        <span class="tile">A</span>
+        <span class="tile">G</span>
+        <span class="tile absent">U</span>
+        <span class="tile">E</span>
+      </div>
+      <p class="lead mb-4">"U" is not in the word in any spot.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %} {% block title %}Profile{% endblock %}{% block main %}
+<div class="container px-4 py-5">
+  <h2 class="pb-2 border-bottom">Profile</h2>
+
+  <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
+    <div class="col d-flex flex-column align-items-start gap-2">
+      <h3 class="fw-bold">Welcome to your Profile, {{session['username']}}.</h3>
+      <p class="text-muted">
+        Here you will find all the records from your past Wordle games. Keep on
+        adding wins and share with your friends your ability in this awesome
+        game!
+      </p>
+      <a href="/wordle" class="btn btn-primary btn-lg">Click to Play!</a>
+    </div>
+
+    <div class="container px-4 py-5" id="custom-cards">
+      <div class="row row-cols-1 row-cols-lg-2 align-items-stretch g-4 py-5">
+        <div class="col">
+          <div
+            class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+            style="background-image: url('/static/images/confeti.webp')"
+          >
+            <div
+              class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
+            >
+              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
+                {{record[0]}}
+              </h3>
+              <p>Total Wins</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div
+            class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+          >
+            <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
+                {{record[1]}}
+              </h3>
+              <p>Total Losses</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

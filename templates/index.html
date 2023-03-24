@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block title %}Index{% endblock %} {% block main %}
+<div class="container col-xxl-8 px-4 py-5">
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+    <div class="col-10 col-sm-8 col-lg-6">
+      <img
+        src="/static/images/wordle-what-is-the-answer.jpg"
+        class="d-block mx-lg-auto img-fluid"
+        alt="Wordle Image"
+        width="700"
+        height="500"
+        loading="lazy"
+      />
+    </div>
+    <div class="col-lg-6">
+      <h1 class="display-5 fw-bold lh-1 mb-3">Welcome to Wordle!</h1>
+      <p class="lead">
+        Keep in mind that this is a Wordle clone. This is not the original game.
+        This is a version created for academic purposes by a student of the
+        Masters in Computer Science and Business Technology at the IE School of
+        Science and Technology.
+      </p>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a href="/wordle">
+          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">
+            Play!
+          </button></a
+        >
+        {% if not session['username'] %}
+        <a href="/login">
+          <button type="button" class="btn btn-outline-secondary btn-lg px-4">
+            Sign In
+          </button></a
+        >
+        <a href="/register">
+          <button type="button" class="btn btn-outline-secondary btn-lg px-4">
+            Register
+          </button></a
+        >
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock%}
