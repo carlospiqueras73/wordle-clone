@@ -8,6 +8,7 @@
   - Python Flask Application
   - Javascript Game
 - Possible Improvements for a 2.0 version
+- Deployment Link
 
 ## Repo Intro
 
@@ -112,3 +113,6 @@ In a hypothetical 2.0 version of this application, many features could be implem
 - The APIs could be chosen better, in terms that a bug had to be fixed because sometimes the random word API is way to complex, that it does not appear in dictionary API, making it impossible for the user to win. This does not happen anymore, but I still believe that the random word should be simpler and the dictionary API more complete.
 - The previous point leads to the possibility of including different levels of difficulty from the random word API, or even retrieving words based on a specific theme, so the user already has a hint of what the word is about.
 - An additional feature could be added to implement different language possibilities, offering the user to choose first in which language he/she wants to play the game.
+
+## Deployment Link
+http://wordle-381514.oa.r.appspot.com/
