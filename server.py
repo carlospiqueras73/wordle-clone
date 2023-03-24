@@ -88,7 +88,7 @@ def handle_register():
         session["username"] = username
         session["user_id"] = user[0]
         # Redirect to the index route
-        return redirect(url_for("index")), 200
+        return redirect(url_for("index"))
 
 # Login route - For logging in if you already have an account
 @wordle.route("/login")
@@ -126,7 +126,7 @@ def handle_login():
                 session["username"] = username
                 session["user_id"] = user[0]
                 # Redirect to the index route
-                return redirect(url_for("index")), 200
+                return redirect(url_for("index"))
             
         # Render template that displays login error
         return render_template("login_failed.html"), 400
@@ -138,7 +138,7 @@ def logout():
     session.pop("username")
     session.pop("user_id")
     # Redirect to the index route
-    return redirect(url_for("index")), 200
+    return redirect(url_for("index"))
 
 # Rules route - For displaying the rules of Wordle
 @wordle.route("/rules")
